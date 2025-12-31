@@ -24,11 +24,11 @@ description: "Task list for Intermediate Level feature implementation in Phase I
 
 **⚠️ CRITICAL**: This foundation must be complete before any user story work begins.
 
-- [ ] T001 [P] Create directory structure: `src/core/`, `src/utils/`
-- [ ] T002 Implement `Task` dataclass in `src/core/models.py` with `due_date`, `priority`, and `tags` (per `data-model.md`)
-- [ ] T003 Implement date and priority validators in `src/utils/validators.py` (per `plan.md`)
-- [ ] T004 Create `TaskManager` in `src/core/manager.py` to handle the in-memory collection and unique ID generation
-- [ ] T005 [P] Setup basic unit tests for model and validators in `tests/unit/`
+- [X] T001 [P] Create directory structure: `src/core/`, `src/utils/`
+- [X] T002 Implement `Task` dataclass in `src/core/models.py` with `due_date`, `priority`, and `tags` (per `data-model.md`)
+- [X] T003 Implement date and priority validators in `src/utils/validators.py` (per `plan.md`)
+- [X] T004 Create `TaskManager` in `src/core/manager.py` to handle the in-memory collection and unique ID generation
+- [X] T005 [P] Setup basic unit tests for model and validators in `tests/unit/`
 
 **Checkpoint**: Foundation ready - task enrichment and retrieval logic can now be implemented.
 
@@ -40,10 +40,10 @@ description: "Task list for Intermediate Level feature implementation in Phase I
 
 **Independent Test**: Create a task with a specific date and priority and verify it displays correctly in the list.
 
-- [ ] T006 [US1] Update `add_task` flow in `src/app.py` to prompt for due date and priority
-- [ ] T007 [US1] Update `update_task` flow in `src/app.py` to allow modifying due date and priority
-- [ ] T008 [US1] Integrate `validators.py` into the CLI task creation/update loops
-- [ ] T009 [US1] Enhance task listing display in `src/app.py` to show Due Date and Priority columns
+- [X] T006 [US1] Update `add_task` flow in `src/app.py` to prompt for due date and priority
+- [X] T007 [US1] Update `update_task` flow in `src/app.py` to allow modifying due date and priority
+- [X] T008 [US1] Integrate `validators.py` into the CLI task creation/update loops
+- [X] T009 [US1] Enhance task listing display in `src/app.py` to show Due Date and Priority columns
 
 **Checkpoint**: Users can now manage tasks with dates and priority levels.
 
@@ -55,9 +55,9 @@ description: "Task list for Intermediate Level feature implementation in Phase I
 
 **Independent Test**: Assign "work, urgent" to a task and verify they appear as a list.
 
-- [ ] T010 [US2] Update `add_task` and `update_task` in `src/app.py` to accept comma-separated tags
-- [ ] T011 [US2] Implement tag parsing logic (whitespace stripping, uniqueness) in `src/core/manager.py`
-- [ ] T012 [US2] Update task display to include tags in the output
+- [X] T010 [US2] Update `add_task` and `update_task` in `src/app.py` to accept comma-separated tags
+- [X] T011 [US2] Implement tag parsing logic (whitespace stripping, uniqueness) in `src/core/manager.py`
+- [X] T012 [US2] Update task display to include tags in the output
 
 **Checkpoint**: Tasks now support flexible categorization via tags.
 
@@ -69,10 +69,10 @@ description: "Task list for Intermediate Level feature implementation in Phase I
 
 **Independent Test**: Search for a keyword found only in tags and verify matching tasks are returned.
 
-- [ ] T013 [US3] Implement search logic (keyword matching across title, desc, tags) in `src/core/engine.py`
-- [ ] T014 [US3] Implement filter logic (by priority, status, tag, or date) in `src/core/engine.py`
-- [ ] T015 [US3] Add "Search" and "Filter" options to the main CLI menu in `src/app.py`
-- [ ] T016 [US3] Handle "No matching tasks found" gracefully with a user message
+- [X] T013 [US3] Implement search logic (keyword matching across title, desc, tags) in `src/core/engine.py`
+- [X] T014 [US3] Implement filter logic (by priority, status, tag, or date) in `src/core/engine.py`
+- [X] T015 [US3] Add "Search" and "Filter" options to the main CLI menu in `src/app.py`
+- [X] T016 [US3] Handle "No matching tasks found" gracefully with a user message
 
 **Checkpoint**: Retrieval functionality is fully operational.
 
@@ -84,9 +84,9 @@ description: "Task list for Intermediate Level feature implementation in Phase I
 
 **Independent Test**: Sort a list with mixed priorities and verify "High" tasks are at the top.
 
-- [ ] T017 [US4] Implement priority-weighted sorting logic in `src/core/engine.py`
-- [ ] T018 [US4] Implement due date and title sorting logic in `src/core/engine.py`
-- [ ] T019 [US4] Add "Sort" option to the CLI menu and implement sort stability (fallback to creation time)
+- [X] T017 [US4] Implement priority-weighted sorting logic in `src/core/engine.py`
+- [X] T018 [US4] Implement due date and title sorting logic in `src/core/engine.py`
+- [X] T019 [US4] Add "Sort" option to the CLI menu and implement sort stability (fallback to creation time)
 
 **Checkpoint**: All Intermediate Level features are complete and integrated.
 
@@ -94,9 +94,9 @@ description: "Task list for Intermediate Level feature implementation in Phase I
 
 ## Phase 6: Polish & Final Validation
 
-- [ ] T020 Run full integration test of all flows via the CLI
-- [ ] T021 Validate `quickstart.md` examples against the final implementation
-- [ ] T022 Final code cleanup and documentation update
+- [X] T020 Run full integration test of all flows via the CLI
+- [X] T021 Validate `quickstart.md` examples against the final implementation
+- [X] T022 Final code cleanup and documentation update
 
 ---
 

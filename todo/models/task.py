@@ -3,13 +3,28 @@
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
+from typing import List, Optional
 
 
 class TaskStatus(str, Enum):
     """Enumeration of possible task statuses."""
-
     INCOMPLETE = "incomplete"
     COMPLETE = "complete"
+
+
+class Priority(str, Enum):
+    """Enumeration of possible task priorities."""
+    HIGH = "high"
+    MEDIUM = "medium"
+    LOW = "low"
+
+
+class RecurrenceType(str, Enum):
+    """Enumeration of possible recurrence types."""
+    NONE = "none"
+    DAILY = "daily"
+    WEEKLY = "weekly"
+    MONTHLY = "monthly"
 
 
 @dataclass
@@ -20,6 +35,10 @@ class Task:
         id: Unique identifier for the task (auto-generated).
         content: The task description (1-500 characters).
         status: Current completion status.
+        due_date: Optional due datetime.
+        priority: Priority level (high, medium, low).
+        recurrence: Recurrence type (none, daily, weekly, monthly).
+        tags: List of categorization tags.
         created_at: Timestamp when the task was created.
         updated_at: Timestamp when the task was last modified.
     """
@@ -27,6 +46,10 @@ class Task:
     id: int
     content: str
     status: TaskStatus = TaskStatus.INCOMPLETE
+    due_date: Optional[datetime] = None
+    priority: Priority = Priority.MEDIUM
+    recurrence: RecurrenceType = RecurrenceType.NONE
+    tags: List[str] = field(default_factory=list)
     created_at: datetime = field(default_factory=datetime.now)
     updated_at: datetime = field(default_factory=datetime.now)
 
@@ -55,16 +78,28 @@ class Task:
         self.updated_at = datetime.now()
 
     def update_content(self, new_content: str) -> None:
-        """Update the task content.
-
-        Args:
-            new_content: The new task description.
-        """
+        """Update the task content."""
         self.content = new_content.strip()
+        self.updated_at = datetime.now()
+
+    def update_metadata(self, due_date: Optional[datetime] = None, priority: Optional[Priority] = None,
+                        tags: Optional[List[str]] = None, recurrence: Optional[RecurrenceType] = None) -> None:
+        """Update task metadata."""
+        if due_date is not None:
+            self.due_date = due_date
+        if priority is not None:
+            self.priority = priority
+        if tags is not None:
+            self.tags = tags
+        if recurrence is not None:
+            self.recurrence = recurrence
         self.updated_at = datetime.now()
 
     def __str__(self) -> str:
         """Return a human-readable string representation."""
         status_icon = "[x]" if self.status == TaskStatus.COMPLETE else "[ ]"
-        status_text = "Complete" if self.status == TaskStatus.COMPLETE else "Incomplete"
-        return f"{self.id:3} | {status_icon} {status_text:<10} | {self.content}"
+        due_str = self.due_date.strftime("%Y-%m-%d %H:%M") if self.due_date else "None"
+        recur_str = f" ({self.recurrence.value})" if self.recurrence != RecurrenceType.NONE else ""
+        prio = f" [{self.priority.upper()}]"
+        tag_str = f" Tags: {', '.join(self.tags)}" if self.tags else ""
+        return f"{self.id:3} | {status_icon}{prio:<10} | {self.content} | Due: {due_str}{recur_str}{tag_str}"
