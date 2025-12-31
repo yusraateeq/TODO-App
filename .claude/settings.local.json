@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(source:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(npm run build:*)",
+      "Bash(git fetch:*)",
+      "Bash(ls:*)",
+      "Bash(/bin/bash:*)"
+    ]
+  }
+}
